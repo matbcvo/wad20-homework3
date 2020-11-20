@@ -15,13 +15,13 @@
       <div id="login-form">
         <h3>Please Log In</h3>
         <div>
-          <input type="text" name="email" placeholder="Email">
+          <input type="text" name="email" placeholder="Email" :value="loginEmail">
         </div>
         <div>
-          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password" :value="loginPassword">
         </div>
         <div>
-          <button class="button" name="login" @submit="$router.push({name: 'browse'})">Log In</button>
+          <button class="button" name="login" @click="login">Log In</button>
         </div>
         <div>
           <small>
@@ -32,6 +32,24 @@
     </section>
   </section>
 </template>
+
+<script>
+
+export default {
+
+  name: 'login',
+  data: function() {
+    return { loginEmail: "", loginPassword: "" }
+  },
+  methods: {
+    login: function() {
+      // TODO: actually login
+      this.$router.push({name: 'browse'})
+    }
+  }
+}
+
+</script>
 
 <style>
 
