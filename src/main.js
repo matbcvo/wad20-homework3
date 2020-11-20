@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 Vue.use(VueRouter);
 
 const routes = [
-  {path: '/', name: 'browse', component: Browse},
+  {path: '/browse', name: 'browse', component: Browse},
   {path: '/login', name: 'login', component: Login},
 ]
 
