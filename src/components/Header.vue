@@ -18,8 +18,8 @@
             </span>
           <span class="separator"></span>
           <span>
-              <a href="login.html">Log Out</a>
-            </span>
+            <router-link :to="{ name: 'login' }">Log Out</router-link>
+          </span>
         </div>
       </div>
     </nav>
@@ -45,7 +45,7 @@ export default {
     initProfileMenu: function() {
       axios.get('https://private-517bb-wad20postit.apiary-mock.com/users/1')
         .then(json => (this.userInfo = json.data))
-    }
+    },
   },
   beforeMount() {
     this.initProfileMenu()

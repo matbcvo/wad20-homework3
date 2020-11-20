@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
-    <Header />
+  <div id="app" :class="$route.name == 'login' ? ['flex-middle', 'viewport-size'] : []">
+    <Header v-if="$route.name != 'login'"/>
+    <router-view/>
   </div>
 </template>
 
@@ -10,9 +11,6 @@ import Header from './components/Header.vue'
 export default {
 
   name: 'app',
-  methods: {
-
-  },
   components: {
     Header,
   }
@@ -52,5 +50,16 @@ export default {
   button:hover {
     box-shadow: 0 0 5px rgba(38, 50, 56, 0.7);
     cursor: pointer;
+  }
+
+  .flex-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .viewport-size {
+    width: 100vw;
+    height: 100vh;
   }
 </style>
