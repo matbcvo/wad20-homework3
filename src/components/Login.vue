@@ -44,7 +44,7 @@ export default {
   methods: {
     login: function() {
       // TODO: actually login
-      this.$router.push({name: 'browse'})
+      this.$router.push({name: 'index'})
     }
   }
 }

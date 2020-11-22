@@ -18,6 +18,7 @@ export default {
 </script>
 
 <style>
+  @import url('http://fonts.googleapis.com/css?family=Roboto+Slab');
   * {
     font-family: 'Roboto Slab', serif;
     outline: none;
