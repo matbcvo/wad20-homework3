@@ -10,7 +10,7 @@
         <input type="text" name="search"><button type="button">Search</button>
       </div>
       <div class="avatar-container">
-        <img class="avatar" @click="toggleProfileMenu" :src="user.avatar">
+        <img class="avatar" @click="toggleProfileMenu" :src="user.avatar" v-on-clickaway="hideProfileMenu">
         <div class="drop-down-container" v-show="profileMenuShown">
           <span id="user-name">{{ user.firstname + " " + user.lastname }}</span>
           <span id="user-email">{{ user.email }}</span>
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { directive as onClickaway } from 'vue-clickaway';
+
 export default {
 
   name: 'app',
@@ -41,6 +43,9 @@ export default {
     toggleProfileMenu: function() {
       this.profileMenuShown = !this.profileMenuShown
     },
+    hideProfileMenu: function() {
+      this.profileMenuShown = false;
+    },
   },
   computed: {
     user: function() {
@@ -49,6 +54,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch('getUser')
+  },
+  directives: {
+    onClickaway: onClickaway,
   },
 }
 </script>
