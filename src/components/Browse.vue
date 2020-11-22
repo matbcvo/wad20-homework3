@@ -1,7 +1,7 @@
 <template>
     <section>
     <section class="profiles-container"  >
-      <div class="profile" v-for="profile in this.profiles" :key="profile.id">
+      <div class="profile" v-for="profile in profiles" :key="profile.id">
         <div class="profile-author">
           <img alt="avatar" :src="profile.avatar">
           <p>{{profile.firstname + " "+ profile.lastname}}</p>
@@ -18,27 +18,23 @@
 </template>
 
 <script>
-
-import axios from 'axios';
-
 export default {
   name:'browse',
   data:function (){
     return {
-      profiles:[],
       selected:[],
     }
 
   },
   mounted(){
-    this.getProfiles()
     this.$store.dispatch('getProfiles')
   },
-  methods:{
-    getProfiles:function (){
-      axios.get("https://private-anon-7f767dfdee-wad20postit.apiary-mock.com/profiles")
-      .then(response => {this.loadProfiles(response.data)})
+  computed: {
+    profiles: function() {
+        return this.$store.getters.getProfiles;
     },
+  },
+  methods:{
     loadProfiles:function (data){
       for (let profile of data) {
         this.profiles.push(profile)
