@@ -14,7 +14,7 @@ export default {
         Post,
     },
     computed: {
-        posts : function() {
+        posts: function() {
             return this.$store.getters.getPosts;
         },
     },

@@ -55,6 +55,7 @@ const store = new Vuex.Store({
       axios.get("https://private-anon-5a6551f4d8-wad20postit.apiary-mock.com/posts").then(response => {
         commit("setPosts", response.data);
         //console.log(response.data);
+        console.log("getPosts");
       }).catch(error => {
         alert("Error, can't get posts data: " + error);
       });
@@ -62,6 +63,7 @@ const store = new Vuex.Store({
     async getProfiles({commit}) {
       axios.get("https://private-anon-5a6551f4d8-wad20postit.apiary-mock.com/profiles").then(response => {
         commit("setProfiles", response.data);
+        console.log("getProfiles");
         //console.log(response.data);
       }).catch(error => {
         alert("Error, can't get profiles data: " + error);
@@ -70,6 +72,7 @@ const store = new Vuex.Store({
     async getUser({commit}) {
       axios.get("https://private-anon-5a6551f4d8-wad20postit.apiary-mock.com/users/1").then(response => {
         commit("setUser", response.data);
+        console.log("getUser");
         //console.log(response.data);
       }).catch(error => {
         alert("Error, can't get user data: " + error);

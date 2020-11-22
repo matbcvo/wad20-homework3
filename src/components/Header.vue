@@ -10,10 +10,10 @@
         <input type="text" name="search"><button type="button">Search</button>
       </div>
       <div class="avatar-container">
-        <img class="avatar" @click="toggleProfileMenu" :src="userInfo.avatar">
+        <img class="avatar" @click="toggleProfileMenu" :src="user.avatar">
         <div class="drop-down-container" v-show="profileMenuShown">
-          <span id="user-name">{{ userInfo.firstname + " " + userInfo.lastname }}</span>
-          <span id="user-email">{{ userInfo.email }}</span>
+          <span id="user-name">{{ user.firstname + " " + user.lastname }}</span>
+          <span id="user-email">{{ user.email }}</span>
           <span class="separator"></span>
           <span>
             <router-link :to="{ name: 'browse' }">Browse</router-link>
@@ -29,29 +29,27 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
 
   name: 'app',
   data: function() {
     return {
       profileMenuShown: false,
-      userInfo: {}
     }
   },
   methods: {
     toggleProfileMenu: function() {
       this.profileMenuShown = !this.profileMenuShown
     },
-    initProfileMenu: function() {
-      axios.get('https://private-517bb-wad20postit.apiary-mock.com/users/1')
-        .then(json => (this.userInfo = json.data))
+  },
+  computed: {
+    user: function() {
+      return this.$store.getters.getUser;
     },
   },
-  beforeMount() {
-    this.initProfileMenu()
-  }
+  mounted() {
+    this.$store.dispatch('getUser')
+  },
 }
 </script>
 

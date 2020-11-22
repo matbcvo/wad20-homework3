@@ -30,7 +30,10 @@ export default {
     }
 
   },
-  mounted(){this.getProfiles()},
+  mounted(){
+    this.getProfiles()
+    this.$store.dispatch('getProfiles')
+  },
   methods:{
     getProfiles:function (){
       axios.get("https://private-anon-7f767dfdee-wad20postit.apiary-mock.com/profiles")
