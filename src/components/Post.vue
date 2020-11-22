@@ -19,7 +19,7 @@
 
         <div class="post-title">
             <h3>
-                {{ text }}
+                {{ text | capitalizeFirstLetterOfEachWord }}
             </h3>
         </div>
 
@@ -49,6 +49,15 @@ export default {
     methods: {
         likePost : function() {
             this.likedPost = !this.likedPost;
+        }
+    },
+    filters: {
+        capitalizeFirstLetterOfEachWord: function(string) {
+            var splitString = string.toLowerCase().split(' ');
+            for (var i = 0; i < splitString.length; i++) {
+                splitString[i] = splitString[i].charAt(0).toUpperCase() + splitString[i].substring(1);
+            }
+            return splitString.join(' ');
         }
     }
 }
