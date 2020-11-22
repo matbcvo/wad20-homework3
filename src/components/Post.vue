@@ -100,7 +100,7 @@ export default {
 .post .post-author .post-author-info small {
     position: absolute;
     top: 10px;
-    left: 35px;
+    left: 40px;
 }
 
 .post .post-author .post-author-info + small {

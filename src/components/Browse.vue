@@ -35,12 +35,6 @@ export default {
     },
   },
   methods:{
-    loadProfiles:function (data){
-      for (let profile of data) {
-        this.profiles.push(profile)
-        this.$set(this.selected,profile.id, false)
-      }
-    },
     followed:function ( id){
       this.$set(this.selected,id, !this.selected[id])
     }
@@ -77,33 +71,34 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px;
+  margin-top: 35px;
+  padding: 5px;
 }
 .profile .profile-author p {
   text-align: center;
-  padding: 10px;
 }
 
 
-
-.follow {
-  background-color: #01579b;
+button{
+  padding: 8px 20px;
+  border-radius:4px;
+  margin-top: 20px;
+  text-align: center;
   height: 25px;
   line-height: 10px;
-  text-align: center;
-  border: none;
-  margin-left:40%;
   margin-bottom: 5%;
+  border: none;
+}
+.follow {
+  background-color: #01579b;
+  margin-left:40%;
+
 }
 
 .followed {
   background-color: #8a8a8a;
-  height: 25px;
-  line-height: 10px;
-  text-align: center;
-  border: none;
   margin-left: 38%;
-  margin-bottom: 5%;
+
 }
 
 
